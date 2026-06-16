@@ -4,7 +4,7 @@ import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.AfterMethod;
 
 import org.testng.annotations.BeforeMethod;
@@ -25,7 +25,17 @@ public class BaseClass {
 
 	        WebDriverManager.chromedriver().setup();
 
-	        WebDriver driver = new ChromeDriver();
+	        ChromeOptions options = new ChromeOptions();
+
+	        String github = System.getenv("GITHUB_ACTIONS");
+
+	        if ("true".equals(github)) {
+	            options.addArguments("--headless=new");
+	            options.addArguments("--no-sandbox");
+	            options.addArguments("--disable-dev-shm-usage");
+	        }
+
+	        WebDriver driver = new ChromeDriver(options);
 
 	        tdriver.set(driver);
 
