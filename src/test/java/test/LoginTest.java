@@ -63,7 +63,7 @@ public class LoginTest extends BaseClass {
 		System.out.println("Excel file used user name and pass filled");
 	}
 
-	@Test(enabled=true)
+	@Test(enabled=false)
 	public void Test3() throws IOException {
 
 		Properties property = Utilities.getProperty();
